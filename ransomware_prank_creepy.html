@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>⚠ SYSTEM LOCKED ⚠</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #2b0000 0%, #000000 100%);
+      color: #ff3c3c;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: bgpulse 4s infinite;
+    }
+
+    @keyframes bgpulse {
+      0%, 100% { background-color: #1b0000; }
+      50% { background-color: #3b0000; }
+    }
+
+    .lock-icon {
+      font-size: 120px;
+      animation: shake 1.2s infinite ease-in-out;
+      text-shadow: 0 0 20px red;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      50% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+
+    .flicker {
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0;
+      }
+    }
+
+    #timer {
+      font-size: 100px;
+      font-weight: bolder;
+      font-family: 'Times New Roman', Times, serif;
+      margin: 20px 0;
+      color: #ffffff;
+      text-shadow: 0 0 15px #ff0000;
+    }
+        #message {
+      font-size: 40px;
+      color: rgb(255, 255, 255);
+      margin-top: 20px;
+      font-weight: bolder;
+      text-shadow: 0 0 15px #ff0000;
+    }
+
+    .main-msg {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 10px;
+      color: #ff0000;
+      text-shadow: 0 0 12px red;
+    }
+
+    .box {
+      background: #200000;
+      color: #ffcccc;
+      padding: 20px;
+      width: 80%;
+      max-width: 750px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px red;
+      margin-top: 20px;
+      animation: pulseRed 2s infinite;
+    }
+
+    @keyframes pulseRed {
+      0%, 100% { box-shadow: 0 0 15px red; }
+      50% { box-shadow: 0 0 30px red; }
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 22px;
+      color: #ff6666;
+    }
+
+    .payment-options {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ff0000;
+      background-color: #2a0000;
+      color: white;
+      box-shadow: 0 0 10px #ff0000;
+    }
+
+    button {
+      padding: 10px 25px;
+      background-color: #ff0000;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 12px red;
+    }
+
+   
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  </audio> 
+  <div class="lock-icon flicker">🔒💀</div>
+
+  <h2 class="flicker">⚠ Your files will be deleted in:</h2>
+  <div id="timer">01:00</div>
+  <div id="message"></div> <!-- Message will show here -->
+
+
+  <div class="main-msg flicker">💣 WARNING: Your system is ENCRYPTED 💣</div>
+
+  <div class="box">
+    <div class="section-title">What Happened?</div>
+    <p>All your personal data, photos, videos, work files, including your operating system have been encrypted and can be accessed again if you pay a ransome. You can't access anything on this machine but this screen.
+
+You have one hour to pay , otherwise you will no longer be able to decrypt them. Powering off or restarting your computer will also destroy your files.</p>
+
+    <div class="section-title">What You Must Do</div>
+    <p>Time is running out. Pay to get your files back before they're lost forever.Don't waste your time.</p>
+
+    <div class="section-title">Payment Methods</div>
+    <div class="payment-options">
+      1. Monopoly Money: <code>GIVE ME $399 BY THIS UPI AND SAVE YOUR FILES</code><br><br>
+      2. PayDude: <code>GIVE ME $399 BY THIS APP AND SAVE YOUR FILES</code><br><br>
+      3. Kidney Donation: <code>YOU CAN ALSO PAY BY YOUR KIDNEY</code>
+    </div>
+  </div>
+
+  <div>
+    <input type="text" placeholder="Enter Decryption Key" />
+    <button>Decrypt</button>
+  </div>
+
+<script>
+    let time = 60; // 60 seconds
+
+    function startCountdown() {
+      const timerDisplay = document.getElementById('timer');
+      const messageDisplay = document.getElementById('message');
+
+      const countdown = setInterval(function () {
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+
+        if (seconds < 10) seconds = "0" + seconds;
+        if (minutes < 10) minutes = "0" + minutes;
+
+        timerDisplay.innerHTML = minutes + ":" + seconds;
+        time--;
+
+        if (time < 0) {
+          clearInterval(countdown);
+          timerDisplay.innerHTML = "00:00";
+          messageDisplay.innerHTML = "⏰ Just a prank bro !!! Don't worry";
+        }
+      }, 1000);
+    }
+
+    window.onload = startCountdown;
+  </script>
+
+
+ 
+   
+</body>
+</html>
